@@ -23,13 +23,14 @@ class LoginActivity : AppCompatActivity() {
         animate(bind.btnLogin, View.TRANSLATION_Y, -200f)
 
         bind.btnLogin.setOnClickListener {
-            if (!bind.etId.text.isBlank() || !bind.etId.text.isEmpty()) {
+            if (bind.etId.text.isNotBlank() || bind.etId.text.isNotEmpty()) {
                 startActivity(
                     Intent(this@LoginActivity, HomeActivity::class.java).putExtra(
                         "data",
                         bind.etId.text.toString()
                     )
                 )
+                bind.etId.text.clear()
             }
         }
     }
